@@ -2,7 +2,7 @@
 
 # Check release
 if [ ! -f /etc/arch-release ]; then
-  exit 0
+        exit 0
 fi
 
 # source variables
@@ -14,31 +14,31 @@ fpk_exup="pkg_installed flatpak && flatpak update"
 
 # Trigger upgrade
 if [ "$1" == "up" ]; then
-  trap 'pkill -RTMIN+20 waybar' EXIT
-  command="
+        trap 'pkill -RTMIN+20 waybar' EXIT
+        command="
     fastfetch -c ~/.config/fastfetch/1.jsonc
     $0 upgrade
     ${aurhlpr} -Syu
     $fpk_exup
     read -n 1 -p 'Press any key to continue...'
     "
-  ghostty --font-size=10 --title systemupdate sh -c "${command}"
+        kitty -o font_size=10 --title systemupdate sh -c "${command}"
 fi
 
 # Check for AUR updates
 aur=$(${aurhlpr} -Qua | wc -l)
 ofc=$(
-  (while pgrep -x checkupdates >/dev/null; do sleep 1; done)
-  checkupdates | wc -l
+        (while pgrep -x checkupdates >/dev/null; do sleep 1; done)
+        checkupdates | wc -l
 )
 
 # Check for flatpak updates
 if pkg_installed flatpak; then
-  fpk=$(flatpak remote-ls --updates | wc -l)
-  fpk_disp="\n󰏓 Flatpak $fpk"
+        fpk=$(flatpak remote-ls --updates | wc -l)
+        fpk_disp="\n󰏓 Flatpak $fpk"
 else
-  fpk=0
-  fpk_disp=""
+        fpk=0
+        fpk_disp=""
 fi
 
 # Calculate total available updates
@@ -48,9 +48,9 @@ upd=$((ofc + aur + fpk))
 
 # Show tooltip
 if [ $upd -eq 0 ]; then
-  upd="0" #Remove Icon completely
-  # upd="󰮯"   #If zero Display Icon only
-  echo "{\"text\":\"$upd\", \"tooltip\":\" Packages are up to date\"}"
+        upd="0" #Remove Icon completely
+        # upd="󰮯"   #If zero Display Icon only
+        echo "{\"text\":\"$upd\", \"tooltip\":\" Packages are up to date\"}"
 else
-  echo "{\"text\":\"$upd\", \"tooltip\":\"󱓽 Official $ofc\n󱓾 AUR $aur$fpk_disp\"}"
+        echo "{\"text\":\"$upd\", \"tooltip\":\"󱓽 Official $ofc\n󱓾 AUR $aur$fpk_disp\"}"
 fi
