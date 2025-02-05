@@ -5,7 +5,8 @@ source $scrDir/globalcontrol.sh
 
 # define functions
 
-print_error() {
+print_error()
+{
         cat <<"EOF"
     ./volumecontrol.sh -[device] <actions>
     ...valid device are...
@@ -20,14 +21,16 @@ EOF
         exit 1
 }
 
-notify_vol() {
-        angle="$(((($vol + 2) / 5) * 5))"
+notify_vol()
+{
+        angle="$((((vol + 2) / 5) * 5))"
         ico="${icodir}/vol-${angle}.svg"
-        bar=$(seq -s "." $(($vol / 15)) | sed 's/[0-9]//g')
+        bar=$(seq -s "." $((vol / 15)) | sed 's/[0-9]//g')
         notify-send -a "t2" -r 91190 -t 800 -i "${ico}" "${vol}${bar}" "${nsink}"
 }
 
-notify_mute() {
+notify_mute()
+{
         mute=$(pamixer "${srce}" --get-mute | cat)
         [ "${srce}" == "--default-source" ] && dvce="mic" || dvce="speaker"
         if [ "${mute}" == "true" ]; then
@@ -37,18 +40,21 @@ notify_mute() {
         fi
 }
 
-action_pamixer() {
+action_pamixer()
+{
         pamixer "${srce}" -"${1}" "${step}"
         vol=$(pamixer "${srce}" --get-volume | cat)
 }
 
-action_playerctl() {
+action_playerctl()
+{
         [ "${1}" == "i" ] && pvl="+" || pvl="-"
         playerctl --player="${srce}" volume "0.0${step}${pvl}"
         vol=$(playerctl --player="${srce}" volume | awk '{ printf "%.0f\n", $0 * 100 }')
 }
 
-select_output() {
+select_output()
+{
         if [ "$@" ]; then
                 desc="$*"
                 device=$(pactl list sinks | grep -C2 -F "Description: $desc" | grep Name | cut -d: -f2 | xargs)
