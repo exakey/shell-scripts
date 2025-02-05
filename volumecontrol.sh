@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 scrDir=$(dirname "$(realpath "$0")")
-source $scrDir/globalcontrol.sh
+source "$scrDir"/globalcontrol.sh
 
 # define functions
 
@@ -111,8 +111,8 @@ step="${2:-5}"
 # execute action
 
 case "${1}" in
-        i) action_${ctrl} i ;;
-        d) action_${ctrl} d ;;
+        i) action_"${ctrl}" i ;;
+        d) action_"${ctrl}" d ;;
         m) "${ctrl}" "${srce}" -t && notify_mute && exit 0 ;;
         *) print_error ;;
 esac
