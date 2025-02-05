@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
+
 # shellcheck disable=SC2312
 # shellcheck disable=SC1090
 scrDir=$(dirname "$(realpath "$0")")
