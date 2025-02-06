@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir"/globalcontrol.sh
+source "$scrDir"/globalcontrol_fixed.sh
 rofiConf="${confDir}/rofi/quickapps.rasi"
 
 [[ $rofiScale =~ ^[0-9]+$ ]] || rofiScale=10

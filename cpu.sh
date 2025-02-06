@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir"/globalcontrol.sh
+source "$scrDir"/globalcontrol_fixed.sh
 # source $scrDir/cpuinfo.sh
 roconf="${confDir}/rofi/cpu.rasi"
 LAYOUT=$(hyprctl getoption general:layout | grep "str" | awk '{print $2}' | sed 's/"//g')
