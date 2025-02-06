@@ -91,7 +91,7 @@ case "${enableWallDcol}" in
 esac
 
 if [ -z "${hydeTheme}" ] || [ ! -d "${hydeConfDir}/themes/${hydeTheme}" ]; then
-        get_themes
+        # get_themes
         hydeTheme="${thmList[0]}"
 fi
 
