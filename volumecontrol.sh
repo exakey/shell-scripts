@@ -3,8 +3,6 @@
 scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir"/globalcontrol_fixed.sh
 
-# define functions
-
 print_error()
 {
         cat <<"EOF"
@@ -69,8 +67,6 @@ select_output()
         fi
 }
 
-# eval device option
-
 while getopts iop:s: DeviceOpt; do
         case "${DeviceOpt}" in
                 i)
@@ -102,13 +98,9 @@ while getopts iop:s: DeviceOpt; do
         esac
 done
 
-# set default variables
-
 icodir="${confDir}/dunst/icons/vol"
 shift $((OPTIND - 1))
 step="${2:-5}"
-
-# execute action
 
 case "${1}" in
         i) action_"${ctrl}" i ;;
