@@ -1,0 +1,10 @@
+##[pylyzer] failed /home/q/.local/share/bin/binary_time.py 1741785915 502
+.datetime: Never
+
+.BIT_0: {"◯"}
+.BIT_1: {"⬤"}
+.main: () -> NoneType
+
+
+
+
