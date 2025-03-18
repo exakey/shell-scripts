@@ -17,7 +17,8 @@ show_freq_info()
 }
 
 min=400
-max=3200
+# max=3200
+max=4460
 
 freq_range()
 {
