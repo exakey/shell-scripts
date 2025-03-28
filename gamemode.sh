@@ -30,5 +30,5 @@ if [ "$HYPRGAMEMODE" = 1 ]; then
 else
         hyprctl reload
         killall waybar
-        waybar >/dev/null 2>&1 &
+        sh $HOME/.local/share/bin/waybarswitch.sh ht
 fi
