@@ -57,11 +57,11 @@ case "${1}" in
                                 notify-send "CPU: $current MHz"
                                 ;;
                         min)
-                                sudo cpupower frequency-set -u 400MHz > /dev/null 2>&1
+                                sudo cpupower frequency-set -u "${min}"MHz > /dev/null 2>&1
                                 show_freq_info
                                 ;;
                         max)
-                                sudo cpupower frequency-set -u 3200MHz > /dev/null 2>&1
+                                sudo cpupower frequency-set -u "${max}"MHz > /dev/null 2>&1
                                 show_freq_info
                                 ;;
                         *)
