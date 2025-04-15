@@ -4,7 +4,7 @@ scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir"/globalcontrol_fixed.sh
 
 hyprctl devices -j | jq -r '.keyboards[].name' | while read keyName; do
-    hyprctl switchxkblayout "$keyName" next
+        hyprctl switchxkblayout "$keyName" next
 done
 
 layMain=$(hyprctl -j devices | jq '.keyboards' | jq '.[] | select (.main == true)' | awk -F '"' '{if ($2=="active_keymap") print $4}')
