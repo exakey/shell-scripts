@@ -47,10 +47,13 @@ upd=$((ofc + aur + fpk))
 [ "${1}" == upgrade ] && printf "[Official] %-10s\n[AUR]      %-10s\n[Flatpak]  %-10s\n" "$ofc" "$aur" "$fpk" && exit
 
 # Show tooltip
-if [ $upd -eq 0 ]; then
-        upd="0" #Remove Icon completely
-        # upd="󰮯"   #If zero Display Icon only
+if [ $upd -lt 10 ]; then
+        upd="█"
+        echo "{\"text\":\"$upd\", \"tooltip\":\" Packages are up to date\"}"
+elif [ $upd -lt 100 ]; then
+        upd="█ █"
         echo "{\"text\":\"$upd\", \"tooltip\":\" Packages are up to date\"}"
 else
+        upd="█ █ █"
         echo "{\"text\":\"$upd\", \"tooltip\":\"󱓽 Official $ofc\n󱓾 AUR $aur$fpk_disp\"}"
 fi

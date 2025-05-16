@@ -6,7 +6,7 @@ roconf="${confDir}/rofi/cpu.rasi"
 
 [[ ${rofiScale} =~ ^[0-9]+$ ]] || rofiScale=14
 r_scale="configuration {font: \"Monocraft ${rofiScale}\";}"
-r_override="window {height: 1.7em; width: 8em; border: ${hypr_width}px; border-radius: 0;} element {border-radius: 0;}"
+r_override="window {height: 1.4em; width: 8em; border: ${hypr_width}px; border-radius: 0;} element {border-radius: 0;}"
 
 current=$(cat /proc/cpuinfo | grep "cpu MHz" | head -n 1 | awk '{print int($4/10+0.5)*10}')
 

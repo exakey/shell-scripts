@@ -8,6 +8,7 @@ if pgrep -x "waybar" >/dev/null; then
 else
         case "$1" in
                 ht) waybar -c "${wayConf}/top.jsonc" -s "${wayConf}/top.css" ;;
+                # ht) waybar -c "${wayConf}/big.jsonc" -s "${wayConf}/big.css" ;;
                 hb) waybar -c "${wayConf}/bottom.jsonc" -s "${wayConf}/bottom.css" ;;
                 st) waybar -c "${swayBar}/top.jsonc" -s "${swayBar}/top.css" ;;
                 sb) waybar -c "${swayBar}/bottom.jsonc" -s "${swayBar}/bottom.css" ;;
