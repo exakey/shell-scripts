@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Get monitor resolution and calculate center position
 # This determines where the Rofi window will appear.
