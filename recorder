@@ -1,1 +1,59 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
+
+# Restores the shader after screenhot has been taken
+restore_shader()
+{
+        if [ -n "$shader" ]; then
+                hyprshade on "$shader"
+        fi
+}
+
+# Saves the current shader and turns it off
+save_shader()
+{
+        shader=$(hyprshade current)
+        hyprshade off
+        trap restore_shader EXIT
+}
+
+save_shader # Saving the current shader
+
+if [ -z "$XDG_VIDEO_DIR" ]; then
+        XDG_VIDEOS_DIR="$HOME/Videos"
+fi
+
+scrDir=$(dirname "$(realpath "$0")")
+source "$scrDir"/globalcontrol_fixed.sh
+save_dir="${2:-$XDG_VIDEOS_DIR}"
+save_file="$save_dir"/"$(date +'Video_%y%m%d_%Hh%Mm%Ss.mp4')"
+
+function print_error
+{
+        cat <<"EOF"
+    ./screenshot.sh <action>
+    ...valid actions are...
+        p  : print all screens
+        s  : snip current screen
+        sf : snip current screen (frozen)
+        m  : print focused monitor
+EOF
+}
+
+if pgrep -x "wf-recorder" >/dev/null; then
+        pkill --signal SIGTERM -x wf-recorder
+else
+        case $1 in
+                s) # record whole screen
+                        notify-send -a "t1" -i "Recording"
+                        wf-recorder -f "$save_file"
+                        ;;
+                sa) # record screen area
+                        notify-send -a "t1" -i "Recording"
+                        wf-recorder -g "$(slurp)" -f "$save_file"
+                        ;;
+        esac
+fi
+
+if [ -f "${save_dir}/${save_file}" ]; then
+        notify-send -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
+fi

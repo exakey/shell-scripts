@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
 
 # Restores the shader after screenhot has been taken
 restore_shader()
@@ -26,7 +26,7 @@ scrDir=$(dirname "$(realpath "$0")")
 source "$scrDir"/globalcontrol_fixed.sh
 swpy_dir="${confDir}/swappy"
 save_dir="${2:-$XDG_PICTURES_DIR/Screenshots}"
-save_file=$(date +'%y%m%d_%Hh%Mm%Ss_screenshot.png')
+save_file=$(date +'Screenshot_%y%m%d_%Hh%Mm%Ss.png')
 temp_screenshot="/tmp/screenshot.png"
 temp_text="/tmp/text"
 
