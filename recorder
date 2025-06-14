@@ -30,30 +30,27 @@ save_file="$save_dir"/"$(date +'Video_%y%m%d_%Hh%Mm%Ss.mp4')"
 function print_error
 {
         cat <<"EOF"
-    ./screenshot.sh <action>
+    ./recorder <action>
     ...valid actions are...
-        p  : print all screens
-        s  : snip current screen
-        sf : snip current screen (frozen)
-        m  : print focused monitor
+        s  : record whole screen
+        sa : record screen area
 EOF
 }
 
 if pgrep -x "wf-recorder" >/dev/null; then
         pkill --signal SIGTERM -x wf-recorder
+        # if [ -f "${save_dir}/${save_file}" ]; then
+                notify-send -t 2000 -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
+        # fi
 else
         case $1 in
                 s) # record whole screen
-                        notify-send -a "t1" -i "Recording"
+                        notify-send -t 1000 -u critical -a "t1" "Recording"
                         wf-recorder -f "$save_file"
                         ;;
                 sa) # record screen area
-                        notify-send -a "t1" -i "Recording"
+                        notify-send -t 1000 -u critical -a "t1" "Recording"
                         wf-recorder -g "$(slurp)" -f "$save_file"
                         ;;
         esac
-fi
-
-if [ -f "${save_dir}/${save_file}" ]; then
-        notify-send -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
 fi
