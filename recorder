@@ -1,0 +1,61 @@
+#!/usr/bin/bash
+
+# Restores the shader after screenhot has been taken
+restore_shader()
+{
+        if [ -n "$shader" ]; then
+                hyprshade on "$shader"
+        fi
+}
+
+# Saves the current shader and turns it off
+save_shader()
+{
+        shader=$(hyprshade current)
+        hyprshade off
+        trap restore_shader EXIT
+}
+
+save_shader # Saving the current shader
+
+if [ -z "$XDG_VIDEO_DIR" ]; then
+        XDG_VIDEOS_DIR="$HOME/Videos"
+fi
+
+scrDir=$(dirname "$(realpath "$0")")
+source "$scrDir"/globalcontrol_fixed.sh
+save_dir="${2:-$XDG_VIDEOS_DIR}"
+save_file="$save_dir"/"$(date +'Video_%y%m%d_%Hh%Mm%Ss.mp4')"
+
+function print_error
+{
+        cat <<"EOF"
+    ./recorder <action>
+    ...valid actions are...
+        s  : record whole screen
+        sa : record screen area
+EOF
+}
+
+function recorder
+{
+        wf-recorder -D -r 120 -f "$save_file" -g "$1"
+        # gpu-screen-recorder -f 120 -bm qp -fm cfr -q ultra -o "$save_file" -w region -region "$1"
+}
+
+if pgrep -x "gpu-screen-recorder " >/dev/null; then
+        pkill --signal SIGTERM -x gpu-screen-recorder
+        # if [ -f "${save_dir}/${save_file}" ]; then
+        notify-send -t 2000 -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
+        # fi
+else
+        notify-send -t 2000 -u critical -a "t1" "Recording"
+        case $1 in
+                s) # record whole screen
+                        recorder
+                        ;;
+                sa) # record screen area
+                        recorder "$(slurp)"
+                        ;;
+        esac
+fi

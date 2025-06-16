@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -d "/sys/devices/system/cpu/cpu0/cpufreq" ]; then
+        for cpu in /sys/devices/system/cpu/cpu*/cpufreq/; do
+                echo "performance" >"${cpu}scaling_governor"
+
+                boost_file="${cpu}boost"
+                if [ -f "$boost_file" ]; then
+                        echo 1 >"$boost_file"
+                fi
+
+                policy_file="/sys/devices/system/cpu/cpufreq/policy*/boost"
+                if [ -f "$policy_file" ]; then
+                        echo 1 >"$policy_file"
+                fi
+        done
+else
+        exit 1
+fi
