@@ -1,6 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
 
-color=$(hyprpicker)
+color=$(hyprpicker -a -l)
 
 notify-send "$color"
 
