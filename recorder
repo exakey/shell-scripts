@@ -43,8 +43,8 @@ function recorder
         # gpu-screen-recorder -f 120 -bm qp -fm cfr -q ultra -o "$save_file" -w region -region "$1"
 }
 
-if pgrep -x "gpu-screen-recorder " >/dev/null; then
-        pkill --signal SIGTERM -x gpu-screen-recorder
+if pgrep -x "wf-recorder" >/dev/null; then
+        pkill --signal SIGTERM -x wf-recorder
         # if [ -f "${save_dir}/${save_file}" ]; then
         notify-send -t 2000 -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
         # fi
