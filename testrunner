@@ -1,7 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
 
-scrDir=`dirname "$(realpath "$0")"`
-source $scrDir/globalcontrol.sh
+scrDir=$(dirname "$(realpath "$0")")
+source "$scrDir"/globalcontrol.sh
 rofDir="${confDir}/rofi"
 
 if [ "${1}" == "--verbose" ] || [ "${1}" == "-v" ] ; then
