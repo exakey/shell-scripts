@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+scrDir=$(dirname "$(realpath "$0")")
+source "$scrDir"/globalcontrol_fixed.sh
+rofiConf="${confDir}/rofi/quickapps.rasi"
+
+[[ $rofiScale =~ ^[0-9]+$ ]] || rofiScale=10
+rScale="configuration {font: \"Monocraft ${rofiScale}\";}"
+rOverride="window {height: 18em; width: 14em; border: ${hypr_width}px; border-radius: 0;} element {border-radius: 0;}"
+
+scripts=$(find "$scrDir" -maxdepth 1 -type f  -exec basename {} \;)
+
+selectedScript=$(echo "$scripts" | rofi -dmenu -theme-str "$rOverride" -theme-str "$rScale" -config "$rofiConf")
+
+if [ -n "$selectedScript" ]; then
+        scriptPath="$scrDir/$selectedScript"
+
+        if [ -x "$scriptPath" ]; then
+                arguments=$(bash -c "$scriptPath --help" 2>&1 | grep -iE 'arguments|usage' | rofi -dmenu -theme-str "$rOverride" -theme-str "$rScale" -config "$rofiConf" "Enter arguments (if any):")
+
+                if [ -z "$arguments" ]; then
+                        "$scriptPath"
+                else
+                        "$scriptPath" "$arguments"
+                fi
+        else
+                echo "Error: Script $scriptPath is not executable."
+        fi
+else
+        echo "No script selected."
+fi
