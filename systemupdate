@@ -63,24 +63,24 @@ elif [ $upd -lt 40 ]; then
         upd="🬖 🬓 🬁"
         echo "{\"text\":\"$upd\"}"
 elif [ $upd -lt 50 ]; then
-        upd="🮆 🬓 🬄"
+        upd="🮋 🬓 🬄"
         echo "{\"text\":\"$upd\"}"
 elif [ $upd -lt 60 ]; then
-        upd="🮆 🬑 🬖"
+        upd="🮋 🬑 🬖"
         echo "{\"text\":\"$upd\"}"
 elif [ $upd -lt 70 ]; then
-        upd="🮆 🬖 🬄"
+        upd="🮋 🬖 🬄"
         echo "{\"text\":\"$upd\"}"
 elif [ $upd -lt 80 ]; then
-        upd="🮆 🮆 🬄"
+        upd="🮋 🮋 🬄"
         echo "{\"text\":\"$upd\"}"
 elif [ $upd -lt 90 ]; then
-        upd="🮆 🮆 🬑"
+        upd="🮋 🮋 🬑"
         echo "{\"text\":\"$upd\"}"
 elif [ $upd -lt 100 ]; then
-        upd="🮆 🮆 🮆"
+        upd="🮋 🮋 🮋"
         echo "{\"text\":\"$upd\"}"
 else
-        upd="🮆 🮆 🮆 🮆"
+        upd="🮋 🮋 🮋 🮋"
         echo "{\"text\":\"$upd\"}"
 fi
