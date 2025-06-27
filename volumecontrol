@@ -19,21 +19,21 @@ EOF
         exit 1
 }
 
-notify_vol()
-{
-        notify-send -r 91190 "Volue: ${vol}%"
-}
+# notify_vol()
+# {
+#         notify-send -r 91190 "Volue: ${vol}%"
+# }
 
-notify_mute()
-{
-        mute=$(pamixer "${srce}" --get-mute | cat)
-        [ "${srce}" == "--default-source" ] && dvce="mic" || dvce="speaker"
-        if [ "${mute}" == "true" ]; then
-                notify-send -r 91190 "muted ${dvce}: ${nsink}"
-        else
-                notify-send -r 91190 "unmuted ${dvce}: ${nsink}"
-        fi
-}
+# notify_mute()
+# {
+#         mute=$(pamixer "${srce}" --get-mute | cat)
+#         [ "${srce}" == "--default-source" ] && dvce="mic" || dvce="speaker"
+#         if [ "${mute}" == "true" ]; then
+#                 notify-send -r 91190 "muted ${dvce}: ${nsink}"
+#         else
+#                 notify-send -r 91190 "unmuted ${dvce}: ${nsink}"
+#         fi
+# }
 
 action_pamixer()
 {
