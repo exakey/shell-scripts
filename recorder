@@ -46,10 +46,10 @@ function recorder
 if pgrep -x "wf-recorder" >/dev/null; then
         pkill --signal SIGTERM -x wf-recorder
         # if [ -f "${save_dir}/${save_file}" ]; then
-        notify-send -t 2000 -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
+        # notify-send -t 2000 -a "t1" -i "${save_dir}/${save_file}" "saved in ${save_dir}"
         # fi
 else
-        notify-send -t 2000 -u critical -a "t1" "Recording"
+        # notify-send -t 2000 -u critical -a "t1" "Recording"
         case $1 in
                 s) # record whole screen
                         recorder
