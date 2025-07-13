@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
 
 # set variables
 
@@ -74,4 +74,3 @@ do
 done | rofi -no-fixed-num-lines -dmenu -theme-str "${r_override}" -theme-str "${pos}" -config $roconf)
 
 $RofiSel &
-
