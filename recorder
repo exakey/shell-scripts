@@ -23,7 +23,7 @@ if [ -z "$XDG_VIDEO_DIR" ]; then
 fi
 
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir"/globalcontrol_fixed.sh
+source "$scrDir"/globalcontrol_fixed
 save_dir="${2:-$XDG_VIDEOS_DIR}"
 save_file="$save_dir"/"$(date +'Video_%y%m%d_%Hh%Mm%Ss.mp4')"
 

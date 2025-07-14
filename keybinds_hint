@@ -7,7 +7,7 @@
 
 pkill -x rofi && exit
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir/globalcontrol.sh"
+source "$scrDir/globalcontrol"
 
 confDir="${XDG_CONFIG_HOME:-$HOME/.config}"
 keyconfDir="$confDir/hypr"

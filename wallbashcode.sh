@@ -2,7 +2,7 @@
 
 #// set variables
 scrDir="$(dirname "$(realpath "$0")")"
-source "${scrDir}/globalcontrol.sh"
+source "${scrDir}/globalcontrol"
 readarray -t codeConf < <(find "${confDir}" -mindepth 1 -maxdepth 1 -type d -name "Code*" -o -name "VSCodium*" | sort)
 readarray -t codeVsix < <(find "$HOME" -mindepth 1 -maxdepth 1 -type d -name ".vscode*" | sort)
 tmpFile="/tmp/$(id -u)$(basename ${0}).tmp"

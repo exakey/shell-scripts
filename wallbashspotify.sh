@@ -4,7 +4,7 @@
 # set variables
 
 scrDir="$(dirname "$(realpath "$0")")"
-source "${scrDir}/globalcontrol.sh"
+source "${scrDir}/globalcontrol"
 
 
 # regen conf
@@ -39,4 +39,3 @@ if pkg_installed spotify && pkg_installed spicetify-cli ; then
     fi
 
 fi
-

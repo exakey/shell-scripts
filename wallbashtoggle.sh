@@ -4,8 +4,8 @@
 #// set variables
 
 scrDir="$(dirname "$(realpath "$0")")"
-source "${scrDir}/globalcontrol.sh"
-TgtScr="$scrDir/globalcontrol.sh"
+source "${scrDir}/globalcontrol"
+TgtScr="$scrDir/globalcontrol"
 rofiConf="${confDir}/rofi/wallbash.rasi"
 wallbashModes=("theme" "auto" "dark" "light")
 
@@ -58,4 +58,3 @@ export reload_flag=1
 set_conf "enableWallDcol" "${setMode}"
 "${scrDir}/themeswitch.sh"
 notify-send -a "t1" -i "$HOME/.config/dunst/icons/hyprdots.png" " ${wallbashModes[setMode]} mode"
-

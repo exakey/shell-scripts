@@ -4,7 +4,7 @@
 # set variables
 
 scrDir=`dirname "$(realpath "$0")"`
-source $scrDir/globalcontrol.sh
+source $scrDir/globalcontrol
 
 
 # sync qt5 and qt6 colors
@@ -20,4 +20,3 @@ if [ ! -z ${dpid} ] ; then
     hyprctl dispatch closewindow pid:${dpid}
     hyprctl dispatch exec dolphin &
 fi
-

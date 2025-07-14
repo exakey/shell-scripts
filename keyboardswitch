@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir"/globalcontrol_fixed.sh
+source "$scrDir"/globalcontrol_fixed
 
 hyprctl devices -j | jq -r '.keyboards[].name' | while read keyName; do
         hyprctl switchxkblayout "$keyName" next

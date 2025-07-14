@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
 
 #// lock instance
 
@@ -39,7 +39,7 @@ Wall_Change() {
 #// set variables
 
 scrDir="$(dirname "$(realpath "$0")")"
-source "${scrDir}/globalcontrol.sh"
+source "${scrDir}/globalcontrol"
 wallSet="${hydeThemeDir}/wall.set"
 wallCur="${cacheDir}/wall.set"
 wallSqr="${cacheDir}/wall.sqre"

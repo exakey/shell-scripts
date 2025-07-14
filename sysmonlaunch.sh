@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 scrDir="$(dirname "$(realpath "$0")")"
-source "${scrDir}/globalcontrol.sh"
+source "${scrDir}/globalcontrol"
 pkgChk=("io.missioncenter.MissionCenter" "htop" "btop" "top")
 
 for sysMon in "${!pkgChk[@]}"; do
@@ -11,4 +11,3 @@ for sysMon in "${!pkgChk[@]}"; do
         break
     fi
 done
-

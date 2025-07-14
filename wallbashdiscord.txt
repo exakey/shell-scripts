@@ -4,7 +4,7 @@
 #// source variables
 
 scrDir="$(dirname "$(realpath "$0")")"
-source "${scrDir}/globalcontrol.sh"
+source "${scrDir}/globalcontrol"
 discord_col="${cacheDir}/landing/discord.css"
 declare -a client_list=()
 
@@ -26,4 +26,3 @@ for client_css in "${client_list[@]}" ; do
         cp "${discord_col}" "${client_css}"
     fi
 done
-

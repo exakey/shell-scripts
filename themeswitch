@@ -3,7 +3,7 @@
 #// set variables
 
 scrDir="$(dirname "$(realpath "$0")")"
-source "${scrDir}/globalcontrol.sh"
+source "${scrDir}/globalcontrol"
 [ -z "${hydeTheme}" ] && echo "ERROR: unable to detect theme" && exit 1
 get_themes
 
@@ -63,7 +63,7 @@ fi
 set_conf "hydeTheme" "${themeSet}"
 echo ":: applying theme :: \"${themeSet}\""
 export reload_flag=1
-source "${scrDir}/globalcontrol.sh"
+source "${scrDir}/globalcontrol"
 
 #// hypr
 

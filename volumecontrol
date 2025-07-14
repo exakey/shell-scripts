@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir"/globalcontrol_fixed.sh
+source "$scrDir"/globalcontrol_fixed
 
 print_error()
 {

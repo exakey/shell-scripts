@@ -23,7 +23,7 @@ if [ -z "$XDG_PICTURES_DIR" ]; then
 fi
 
 scrDir=$(dirname "$(realpath "$0")")
-source "$scrDir"/globalcontrol_fixed.sh
+source "$scrDir"/globalcontrol_fixed
 swpy_dir="${confDir}/swappy"
 save_dir="${2:-$XDG_PICTURES_DIR/Screenshots}"
 save_file=$(date +'Screenshot_%y%m%d_%Hh%Mm%Ss.png')

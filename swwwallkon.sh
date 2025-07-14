@@ -4,7 +4,7 @@
 #// Set variables
 
 scrDir=$(dirname "$(realpath "$0")")
-source "${scrDir}/globalcontrol.sh"
+source "${scrDir}/globalcontrol"
 scrName="$(basename "$0")"
 kmenuPath="$HOME/.local/share/kio/servicemenus"
 kmenuDesk="${kmenuPath}/hydewallpaper.desktop"
@@ -70,4 +70,3 @@ else
     done
 
 fi
-

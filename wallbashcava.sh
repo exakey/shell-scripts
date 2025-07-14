@@ -1,7 +1,7 @@
 # #!/usr/bin/env sh
 #
 # scrDir=$(dirname "$(realpath "$0")")
-# source $scrDir/globalcontrol.sh
+# source $scrDir/globalcontrol
 # cvaDir="${confDir}/cava"
 # CAVA_CONF="${cvaDir}/config"
 # WALL_DCOL="${cvaDir}/Wall-Dcol"

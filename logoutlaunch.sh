@@ -13,7 +13,7 @@ fi
 #// set file variables
 
 scrDir=`dirname "$(realpath "$0")"`
-source $scrDir/globalcontrol.sh
+source $scrDir/globalcontrol
 [ -z "${1}" ] || wlogoutStyle="${1}"
 wLayout="${confDir}/wlogout/layout_${wlogoutStyle}"
 wlTmplt="${confDir}/wlogout/style_${wlogoutStyle}.css"
@@ -72,4 +72,3 @@ wlStyle="$(envsubst < $wlTmplt)"
 #// launch wlogout
 
 wlogout -b "${wlColms}" -c 0 -r 0 -m 0 --layout "${wLayout}" --css <(echo "${wlStyle}") --protocol layer-shell
-
