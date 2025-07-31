@@ -1,7 +1,9 @@
 #!/usr/bin/bash
 
-if pgrep -x "hyprsunset" >/dev/null; then
-        pkill -x "hyprsunset"
-else
+check=$(pgrep hyprsunset)
+
+if [[ -z $check ]]; then
         hyprsunset -t 5000 &
+elif [[ -n $check ]]; then
+        pkill hyprsunset &>/dev/null
 fi
