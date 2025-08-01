@@ -1,10 +1,10 @@
 #!/usr/bin/bash
 
-check=$(hyprctl clients -j | jq '.[] | select(.class == "com.g.bg") | .pid')
+# check=$(hyprctl clients -j | jq '.[] | select(.class == "com.g.bg") | .pid')
 
 # if [[ -z $check ]]; then
-# kill $(hyprctl clients -j | jq '.[] | select(.class == "com.g.bg") | .pid')
-    kill $(hyprctl clients -j | jq -r --arg class "$TARGET_CLASS" '.[] | select(.class == $class) | .pid')
+kill -9 $(hyprctl clients -j | jq '.[] | select(.class == "com.g.bg") | .pid')
+    # kill $(hyprctl clients -j | jq -r --arg class "$TARGET_CLASS" '.[] | select(.class == $class) | .pid')
 # else
 #         hyprctl dispatch exec -- ghostty --config-file="~/.config/hypr/scripts/config" --class=com.q.bg -e "/home/q/.config/hypr/scripts/cava"
 # fi
