@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+phoneDir="$HOME/Desktop/phone"
+
+case "$1" in
+        m)
+                mkdir "$phoneDir"
+                jmtpfs "$phoneDir"
+                ;;
+        r)
+                rsync -av --progress "Внутренний общий накопитель/Music/" "$HOME"/Music/Библиотека\ профиля\ Имран\ Мамедов/
+                ;;
+        *)
+                fusermount -u ./Phone
+                ;;
+esac
