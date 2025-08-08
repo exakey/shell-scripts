@@ -16,7 +16,7 @@ if [ -n "$selectedScript" ]; then
         scriptPath="$scrDir/$selectedScript"
 
         if [ -x "$scriptPath" ]; then
-                arguments=$(bash -c "$scriptPath --help" 2>&1 | grep -iE 'arguments|usage' | rofi -dmenu -theme-str "$rOverride" -theme-str "$rScale" -config "$rofiConf" "Enter arguments (if any):")
+                arguments=$(bash -c "$scriptPath --help" 2>&1 | grep -iE 'case' | rofi -dmenu -theme-str "$rOverride" -theme-str "$rScale" -config "$rofiConf" "Enter arguments (if any):")
 
                 if [ -z "$arguments" ]; then
                         "$scriptPath"
