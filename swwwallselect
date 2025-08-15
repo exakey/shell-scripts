@@ -41,5 +41,5 @@ if [ ! -z "${rofiSel}" ]; then
                 [ -z "${setWall}" ] || break
         done
         "${scrDir}/swwwallpaper" -s "${setWall}"
-        notify-send -a "t1" -i "${thmbDir}/$(set_hash "${setWall}").sqre" " ${rofiSel}"
+        notify-send -a "t1" -i -t 300 "${thmbDir}/$(set_hash "${setWall}").sqre" " ${rofiSel}"
 fi
