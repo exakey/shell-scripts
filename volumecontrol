@@ -21,7 +21,7 @@ EOF
 
 notify_vol()
 {
-        notify-send -r 91190 -t 300 "Volue: ${vol}%"
+        notify-send -r 91190 -t 500 "Volue: ${vol}%"
 }
 
 notify_mute()
@@ -29,9 +29,9 @@ notify_mute()
         mute=$(pamixer "${srce}" --get-mute | cat)
         [ "${srce}" == "--default-source" ] && dvce="mic" || dvce="speaker"
         if [ "${mute}" == "true" ]; then
-                notify-send -r 91190 -t 300 "muted ${dvce}: ${nsink}"
+                notify-send -r 91190 -t 500 "muted ${dvce}: ${nsink}"
         else
-                notify-send -r 91190 -t 300 "unmuted ${dvce}: ${nsink}"
+                notify-send -r 91190 -t 500 "unmuted ${dvce}: ${nsink}"
         fi
 }
 
